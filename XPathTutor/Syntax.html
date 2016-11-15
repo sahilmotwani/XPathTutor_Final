@@ -1,0 +1,181 @@
+<h1 style="color: #5e9ca0;">XPath <span style="color: #2b2301;">Syntax</span></h1>
+<p><strong>XPath uses path expressions to select nodes or node-sets in an XML document. The node is selected by following a path or steps.</strong></p>
+<h2 style="color: #2e6c80;">The XML Example Document</h2>
+<p><strong>We will use the following XML document in the examples below.</strong></p>
+<hr />
+<div style="color: red;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br /><br />&lt;bookstore&gt;<br /><br />&lt;book&gt;<br />&nbsp; &lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br />&nbsp; &lt;price&gt;29.99&lt;/price&gt;<br />&lt;/book&gt;<br /><br />&lt;book&gt;<br />&nbsp; &lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br />&nbsp; &lt;price&gt;39.95&lt;/price&gt;<br />&lt;/book&gt;<br /><br />&lt;/bookstore&gt;</div>
+<hr /><hr />
+<h2 style="color: #2e6c80;">Selecting Nodes</h2>
+<p><strong>XPath uses path expressions to select nodes in an XML document. The node is selected by following a path or steps. The most useful path expressions are listed below:</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 25%;">Expression</th><th>Description</th></tr>
+<tr>
+<td><em>nodename</em></td>
+<td>Selects all nodes with the name "<em>nodename</em>"</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Selects from the root node</td>
+</tr>
+<tr>
+<td>//</td>
+<td>Selects nodes in the document from the current node that match the selection no matter where they are</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Selects the current node</td>
+</tr>
+<tr>
+<td>..</td>
+<td>Selects the parent of the current node</td>
+</tr>
+<tr>
+<td>@</td>
+<td>Selects attributes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>In the table below we have listed some path expressions and the result of the expressions:</strong></p>
+<table>
+<tbody>
+<tr><th style="width: 25%;">Path Expression</th><th>Result</th></tr>
+<tr>
+<td>bookstore</td>
+<td>Selects all nodes with the name "bookstore"</td>
+</tr>
+<tr>
+<td>/bookstore</td>
+<td>Selects the root element bookstore
+<p><strong><strong>Note:</strong> If the path starts with a slash ( / ) it always represents an absolute path to an element!</strong></p>
+</td>
+</tr>
+<tr>
+<td>bookstore/book</td>
+<td>Selects all book elements that are children of bookstore</td>
+</tr>
+<tr>
+<td>//book</td>
+<td>Selects all book elements no matter where they are in the document</td>
+</tr>
+<tr>
+<td>bookstore//book</td>
+<td>Selects all book elements that are descendant of the bookstore element, no matter where they are under the bookstore element</td>
+</tr>
+<tr>
+<td>//@lang</td>
+<td>Selects all attributes that are named lang</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr />
+<h2 style="color: #2e6c80;">Predicates</h2>
+<p><strong>Predicates are used to find a specific node or a node that contains a specific value.</strong></p>
+<p><strong>Predicates are always embedded in square brackets.</strong></p>
+<p><strong>In the table below we have listed some path expressions with predicates and the result of the expressions:</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 40%;">Path Expression</th><th>Result</th></tr>
+<tr>
+<td>/bookstore/book[1]</td>
+<td>Selects the first book element that is the child of the bookstore element.
+<p><strong><strong>Note:</strong> In IE 5,6,7,8,9 first node is[0], but according to W3C, it is [1]. To solve this problem in IE, set the SelectionLanguage to XPath:</strong></p>
+<em>In JavaScript: xml</em>.setProperty("SelectionLanguage","XPath");</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()]</td>
+<td>Selects the last book element that is the child of the bookstore element</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()-1]</td>
+<td>Selects the last but one book element that is the child of the bookstore element</td>
+</tr>
+<tr>
+<td>/bookstore/book[position()&lt;3]</td>
+<td>Selects the first two book elements that are children of the bookstore element</td>
+</tr>
+<tr>
+<td>//title[@lang]</td>
+<td>Selects all the title elements that have an attribute named lang</td>
+</tr>
+<tr>
+<td>//title[@lang='en']</td>
+<td>Selects all the title elements that have a "lang" attribute with a value of "en"</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]</td>
+<td>Selects all the book elements of the bookstore element that have a price element with a value greater than 35.00</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]/title</td>
+<td>Selects all the title elements of the book elements of the bookstore element that have a price element with a value greater than 35.00</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr />
+<h2 style="color: #2e6c80;">Selecting Unknown Nodes</h2>
+<p><strong>XPath wildcards can be used to select unknown XML nodes.</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 25%;">Wildcard</th><th>Description</th></tr>
+<tr>
+<td>*</td>
+<td>Matches any element node</td>
+</tr>
+<tr>
+<td>@*</td>
+<td>Matches any attribute node</td>
+</tr>
+<tr>
+<td>node()</td>
+<td>Matches any node of any kind</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>In the table below we have listed some path expressions and the result of the expressions:</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 25%;">Path Expression</th><th>Result</th></tr>
+<tr>
+<td>/bookstore/*</td>
+<td>Selects all the child element nodes of the bookstore element</td>
+</tr>
+<tr>
+<td>//*</td>
+<td>Selects all elements in the document</td>
+</tr>
+<tr>
+<td>//title[@*]</td>
+<td>Selects all title elements which have at least one attribute of any kind</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr />
+<h2 style="color: #2e6c80;">Selecting Several Paths</h2>
+<p><strong>By using the | operator in an XPath expression you can select several paths.</strong></p>
+<p><strong>In the table below we have listed some path expressions and the result of the expressions:</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 40%;">Path Expression</th><th>Result</th></tr>
+<tr>
+<td>//book/title | //book/price</td>
+<td>Selects all the title AND price elements of all book elements</td>
+</tr>
+<tr>
+<td>//title | //price</td>
+<td>Selects all the title AND price elements in the document</td>
+</tr>
+<tr>
+<td>/bookstore/book/title | //price</td>
+<td>Selects all the title elements of the book element of the bookstore element AND all the price elements in the document</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr />

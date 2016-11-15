@@ -1,0 +1,155 @@
+<h1 style="color: #5e9ca0;">XPath <span class="color_h1">Examples</span></h1>
+
+<p class="intro">Let's try to learn some basic XPath syntax by looking at some examples.</b></p>
+
+
+<h2 style="color: #2e6c80;">The XML Example Document</h2>
+<p><b>We will use the following XML document in the examples below.</b></p>
+<p><b>&quot;books.xml&quot;:</b></p>
+
+<hr>
+<div style="color:Red">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br><br>
+&lt;bookstore&gt;<br><br>
+&lt;book category=&quot;COOKING&quot;&gt;<br>
+&nbsp;
+&lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt;<br>
+&nbsp;
+&lt;author&gt;Giada De Laurentiis&lt;/author&gt;<br>
+&nbsp;
+&lt;year&gt;2005&lt;/year&gt;<br>
+&nbsp;
+&lt;price&gt;30.00&lt;/price&gt;<br>
+&lt;/book&gt;<br><br>
+&lt;book category=&quot;CHILDREN&quot;&gt;<br>
+&nbsp;
+&lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt;<br>
+&nbsp;
+&lt;author&gt;J K. Rowling&lt;/author&gt;<br>
+&nbsp;
+&lt;year&gt;2005&lt;/year&gt;<br>
+&nbsp;
+&lt;price&gt;29.99&lt;/price&gt;<br>
+&lt;/book&gt;<br><br>
+&lt;book category=&quot;WEB&quot;&gt;<br>
+&nbsp;
+&lt;title lang=&quot;en&quot;&gt;XQuery Kick Start&lt;/title&gt;<br>
+&nbsp;
+&lt;author&gt;James McGovern&lt;/author&gt;<br>
+&nbsp;
+&lt;author&gt;Per Bothner&lt;/author&gt;<br>
+&nbsp;
+&lt;author&gt;Kurt Cagle&lt;/author&gt;<br>
+&nbsp;
+&lt;author&gt;James Linn&lt;/author&gt;<br>
+&nbsp;
+&lt;author&gt;Vaidyanathan Nagarajan&lt;/author&gt;<br>
+&nbsp;
+&lt;year&gt;2003&lt;/year&gt;<br>
+&nbsp;
+&lt;price&gt;49.99&lt;/price&gt;<br>
+&lt;/book&gt;<br><br>
+&lt;book category=&quot;WEB&quot;&gt;<br>
+&nbsp;
+&lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt;<br>
+&nbsp;
+&lt;author&gt;Erik T. Ray&lt;/author&gt;<br>
+&nbsp;
+&lt;year&gt;2003&lt;/year&gt;<br>
+&nbsp;
+&lt;price&gt;39.95&lt;/price&gt;<br>
+&lt;/book&gt;<br><br>
+&lt;/bookstore&gt;
+</div>
+<hr>
+
+<h2 style="color: #2e6c80;">Loading the XML Document</h2>
+<p><b>Using XMLHttpRequest to load XML documents is supported in all modern 
+browsers.</b></p>
+<p><b>Code for most modern browsers:</b></p>
+
+<div>
+<div style="color:Green">
+<b>var xmlhttp=new XMLHttpRequest()</b>
+</div></div>
+<p><b>Code for old Microsoft browsers (IE 5 and 6):</b></p>
+<div>
+<div style="color:Green">
+  <b>var xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;)</b></div></div>
+<hr>
+
+<h2 style="color: #2e6c80;">Selecting Nodes</h2>
+<p><b>Unfortunately, there are different ways of dealing with XPath in Internet Explorer and other browsers.</b></p>
+<p><b>In our examples, we have included code that should work with most major browsers.</b></p>
+<p><b>Internet Explorer uses the selectNodes() method to select nodes from the XML document:</b></p>
+
+<div>
+<div style="color:Green">
+  <b>xmlDoc.selectNodes(<i>xpath</i>);</b>
+</div></div>
+
+<p><b>Firefox, Chrome, Opera and Safari use the evaluate() method to select nodes from the 
+XML document:</b></p>
+<div>
+<div style="color:Green">
+  <b>xmlDoc.evaluate(<i>xpath</i>, xmlDoc, null, XPathResult.ANY_TYPE,null);</b>
+</div></div>
+<hr>
+
+<h2 style="color: #2e6c80;">Select all the titles</h2>
+<p><b>The following example selects all the title nodes:</b></p>
+
+<div>
+<h3>Example</h3>
+<div style="color:Green">
+  <b>/bookstore/book/title</b>
+</div>
+
+</div>
+<hr>
+
+<h2 style="color: #2e6c80;">Select the title of the first book</h2>
+<p><b>The following example selects the title of the first book node under the bookstore element:</b></p>
+
+<div>
+<h3>Example</h3>
+<div style="color:Green">
+  <b>/bookstore/book[1]/title</b>
+</div>
+
+</div>
+
+<hr>
+
+<h2 style="color: #2e6c80;">Select all the  prices</h2>
+<p><b>The following example selects the text from all the price nodes:</b></p>
+
+<div>
+<h3>Example</h3>
+<div style="color:Green">
+  <b>/bookstore/book/price[text()]</b>
+</div>
+
+</div>
+<hr>
+
+<h2 style="color: #2e6c80;">Select price nodes with price&gt;35</h2>
+<p><b>The following example selects all the price nodes with a price higher than 35:</b></p>
+
+<div>
+<h3>Example</h3>
+<div style="color:Green">
+  <b>/bookstore/book[price&gt;35]/price</b>
+</div>
+
+</div>
+<hr>
+
+<h2 style="color: #2e6c80;">Select title nodes with price&gt;35</h2>
+<p><b>The following example selects all the title nodes&nbsp;with a price higher than 35:</b></p>
+
+<div>
+<h3>Example</h3>
+<div style="color:Green">
+  <b>/bookstore/book[price&gt;35]/title</b>
+</div>

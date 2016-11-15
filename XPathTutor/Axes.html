@@ -1,0 +1,134 @@
+<h1 style="color: #5e9ca0;">XPath <span style="color: #2b2301;">Axes</span></h1>
+<h2 style="color: #2e6c80;">The XML Example Document</h2>
+<p><strong>We will use the following XML document in the examples below.</strong></p>
+<hr />
+<div style="color: red;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br /><br />&lt;bookstore&gt;<br /><br />&lt;book&gt;<br />&nbsp; &lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br />&nbsp; &lt;price&gt;29.99&lt;/price&gt;<br />&lt;/book&gt;<br /><br />&lt;book&gt;<br />&nbsp; &lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br />&nbsp; &lt;price&gt;39.95&lt;/price&gt;<br />&lt;/book&gt;<br /><br />&lt;/bookstore&gt;</div>
+<hr />
+<h2 style="color: #2e6c80;">XPath Axes</h2>
+<p><strong>An axis defines a node-set relative to the current node.</strong></p>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 38%;">AxisName</th><th style="width: 62%;">Result</th></tr>
+<tr>
+<td>ancestor</td>
+<td>Selects all ancestors (parent, grandparent, etc.) of the current node</td>
+</tr>
+<tr>
+<td>ancestor-or-self</td>
+<td>Selects all ancestors (parent, grandparent, etc.) of the current node and the current node itself</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td>Selects all attributes of the current node</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Selects all children of the current node</td>
+</tr>
+<tr>
+<td>descendant</td>
+<td>Selects all descendants (children, grandchildren, etc.) of the current node</td>
+</tr>
+<tr>
+<td>descendant-or-self</td>
+<td>Selects all descendants (children, grandchildren, etc.) of the current node and the current node itself</td>
+</tr>
+<tr>
+<td>following</td>
+<td>Selects everything in the document after the closing tag of the current node</td>
+</tr>
+<tr>
+<td>following-sibling</td>
+<td>Selects all siblings after the current node</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>Selects all namespace nodes of the current node</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>Selects the parent of the current node</td>
+</tr>
+<tr>
+<td>preceding</td>
+<td>Selects all nodes that appear before the current node in the document, except ancestors, attribute nodes and namespace nodes</td>
+</tr>
+<tr>
+<td>preceding-sibling</td>
+<td>Selects all siblings before the current node</td>
+</tr>
+<tr>
+<td>self</td>
+<td>Selects the current node</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr />
+<h2 style="color: #2e6c80;">Location Path Expression</h2>
+<p><strong>A location path can be absolute or relative.</strong></p>
+<p><strong>An absolute location path starts with a slash ( / ) and a relative location path does not. In both cases the location path consists of one or more steps, each separated by a slash:</strong></p>
+<hr />
+<div style="color: red;">An absolute location path:<br /><br />/step/step/...<br /><br />A relative location path:<br /><br />step/step/...</div>
+<hr />
+<p><strong>Each step is evaluated against the nodes in the current node-set.</strong></p>
+<p><strong>A step consists of:</strong></p>
+<ul>
+<li>an axis (defines the tree-relationship between the selected nodes and the current node)</li>
+<li>a node-test (identifies a node within an axis)</li>
+<li>zero or more predicates (to further refine the selected node-set)</li>
+</ul>
+<p><strong>The syntax for a location step is:</strong></p>
+<div>
+  <hr>
+<div style="color: red;">axisname::nodetest[predicate]</div>
+<hr>
+</div>
+<h3 style="color: #1e6ca0;">Examples</h3>
+<hr />
+<table>
+<tbody>
+<tr><th style="width: 38%;">Example</th><th style="width: 62%;">Result</th></tr>
+<tr>
+<td>child::book</td>
+<td>Selects all book nodes that are children of the current node</td>
+</tr>
+<tr>
+<td>attribute::lang</td>
+<td>Selects the lang attribute of the current node</td>
+</tr>
+<tr>
+<td>child::*</td>
+<td>Selects all element children of the current node</td>
+</tr>
+<tr>
+<td>attribute::*</td>
+<td>Selects all attributes of the current node</td>
+</tr>
+<tr>
+<td>child::text()</td>
+<td>Selects all text node children of the current node</td>
+</tr>
+<tr>
+<td>child::node()</td>
+<td>Selects all children of the current node</td>
+</tr>
+<tr>
+<td>descendant::book</td>
+<td>Selects all book descendants of the current node</td>
+</tr>
+<tr>
+<td>ancestor::book</td>
+<td>Selects all book ancestors of the current node</td>
+</tr>
+<tr>
+<td>ancestor-or-self::book</td>
+<td>Selects all book ancestors of the current node - and the current as well if it is a book node</td>
+</tr>
+<tr>
+<td>child::*/child::price</td>
+<td>Selects all price grandchildren of the current node</td>
+</tr>
+</tbody>
+</table>
+<hr /><hr>

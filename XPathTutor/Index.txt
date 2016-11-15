@@ -1,0 +1,15 @@
+<h1 style="color: #5e9ca0;">Welcome to the <span style="color: #2b2301;">XPATH Tutorial</span></h1>
+<h2 style="color: #2e6c80;">Scope of this tutorial</h2>
+<div>
+  <p><b>This tutorial is aimed at giving you the overall knowledge of XPath.</b> <p>
+  <p><b>You will learn the how to write an XPath expressions</b>.</p>
+  <p><b>You will learn to use different operators in XPath.</b></p>
+  <p><b>Learn to parse through XML to get your data.</b></p>
+ </div>
+<h2 style="color: #2e6c80;">Instructions:</h2>
+<ul>
+<li > Work Through each module.</li>
+<li > After completing each module, mark it as <b> Completed </b> </li>
+<li >You can use interactive module to practice XPath expressions</li> 
+</ul>
+<p><a href="Introduction.html">Next</a></p>
